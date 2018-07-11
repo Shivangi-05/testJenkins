@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  api-ruleset-mgmt:
+    image: api-ruleset-mgmt
+    ports:
+     - 1119:1119
+    deploy:
+      mode: replicated
+      replicas: 3
+
+
+  oce-site-rules-api-rewrite:
+    image: oce-site-rules-api-rewrite
+    ports:
+     - 1121:1121
+    deploy:
+      mode: replicated
+      replicas: 3
+
+
+  api-gateway-service:
+    image: api-gateway-service
+    ports:
+     - 9090:9090
+    deploy:
+      mode: replicated
+      replicas: 1
+
+
+
+
