@@ -8,11 +8,12 @@ pipeline {
             
              stage('Deploy to Internal Instance') {
                  steps {
+                    sh 'cp docker/docker-compose.qa.yml ./docker-compose.qa.yml'
                     sh """docker \\
                             | -H 10.1.2.27:2376 \\
                             | login \\
                             | -u root \\
-                            | -p @four123# \\
+                            | -p @four123#
                            
 
                     sh """docker \\
@@ -21,7 +22,7 @@ pipeline {
                             | --compose-file=./docker-compose.qa.yml \\
                             | --prune \\
                             | --with-registry-auth \\
-                            | ocetagmgmtapi""".stripMargin()
+                            | Servi""".stripMargin()
                 
             }
         }
