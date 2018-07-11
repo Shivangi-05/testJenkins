@@ -14,16 +14,7 @@ pipeline {
                             | login \\
                             | -u root \\
                             | -p @four123#
-                           
 
-                    sh """docker \\
-                            | -H 10.1.2.27:2376 \\
-                            | stack deploy \\
-                            | --compose-file=./docker-compose.qa.yml \\
-                            | --prune \\
-                            | --with-registry-auth \\
-                            | Servi""".stripMargin()
-                
             }
         }
     }
