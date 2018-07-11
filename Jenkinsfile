@@ -3,7 +3,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn --v'
+                sh 'mvn --version'
             }
-
+        }
+        stage('Deploy') {
+            steps {
+                sh 'cp docker/docker-compose.yml ./docker-compose.yml'
+            }
+        }
+    }
 }
