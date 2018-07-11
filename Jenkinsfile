@@ -6,9 +6,9 @@ pipeline {
                 sh 'mvn --v'
             }
             
-             stage('Deploy to Internal Instance') {
+             stage('Deploy') {
                  steps {
-                    sh 'cp docker/docker-compose.qa.yml ./docker-compose.qa.yml'
+                    sh 'cp docker/docker-compose.yml ./docker-compose.yml'
                     sh """docker \\
                             | -H 10.1.2.27:2376 \\
                             | login \\
