@@ -11,10 +11,6 @@ pipeline {
                 sh 'cp docker/docker-compose.yml ./docker-compose.yml'
                 sh """docker \\
                         | -H 10.1.2.27:2376 \\
-                        | --tlsverify \\
-                        | --tlscacert=/site/docker/docker-ca-cert.pem \\
-                        | --tlscert=/site/docker/docker-client-cert.pem \\
-                        | --tlskey=/site/docker/docker-client-key.pem \\
                         | login \\
                         | -u root \\
                         | -p @four123# """.stripMargin()                
