@@ -1,19 +1,10 @@
-pipeline {
-    agent { docker { image 'maven:3.3.3' } }
-    stages {
-        stage('build') {
-            steps {
+node {
+    checkout scm
 
-                sh 'mvn --version'
-            }
+    docker.withRegistry('http://shivangi:shivangi@192.168.5.157:5043/v2/') {
+
+        docker.image('my-custom-image').inside {
+            sh 'make test'
         }
-        
-       stage('Deploy to QA') {
-           steps {
-               docker.withRegistry('http://shivangi:shivangi@192.168.5.157:5043/v2/')  {
-               sh 'cp docker/docker-compose.yml ./docker-compose.yml'
-               sh 'mvn --version'}
-           }
-       }
     }
 }
