@@ -8,9 +8,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+             script {
               docker.withServer('tcp://10.1.2.34:2376') {
                 sh 'cp docker/docker-compose.yml ./docker-compose.yml'}     
-            }
+                }
+             }
         }
     }
 }
