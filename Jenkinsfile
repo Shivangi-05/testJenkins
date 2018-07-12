@@ -1,9 +1,16 @@
-node {
-    checkout scm
-
-    docker.withServer('10.1.2.27:2376') {
-        docker.image('mysql:5').withRun('-p 3306:3306') {
-            /* do things */
+pipeline {
+    agent { docker { image 'maven:3.3.3' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+        stage('Deploy') {
+            steps {
+              docker.withServer('10.1.2.34:2376') {
+                sh 'cp docker/docker-compose.yml ./docker-compose.yml'     
+               }
         }
     }
 }
