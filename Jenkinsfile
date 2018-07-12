@@ -10,7 +10,7 @@ pipeline {
         
        stage('Deploy to QA') {
            steps {
-               docker.withRegistry('http://10.1.2.27')  {
+               docker.withRegistry('http://shivangi:shivangi@192.168.5.157:5043/v2/')  {
                sh 'cp docker/docker-compose.yml ./docker-compose.yml'
                sh 'mvn --version'}
            }
