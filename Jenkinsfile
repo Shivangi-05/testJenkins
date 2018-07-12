@@ -3,16 +3,21 @@ pipeline {
     stages {
         stage('build') {
             steps {
+
                 sh 'mvn --version'
             }
         }
-        stage('Deploy') {
-            steps {
-             script {
-              withServer('tcp://10.1.2.34:2376') {
-                sh 'cp docker/docker-compose.yml ./docker-compose.yml'}     
-                }
-             }
+        
+            try {
+      withEnv([
+         10.1.2.27
+      ]) {
+       sh 'cp docker/docker-compose.yml ./docker-compose.yml'
+       sh 'mvn --version'
         }
+      }
+    } finally {
+      sh 'rm ./docker-compose.qa.yml'
     }
+  }
 }
