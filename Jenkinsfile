@@ -8,10 +8,11 @@ pipeline {
             }
         }
         
-        stage('Deploy to QA') {
-       docker.withRegistry('http://10.1.2.27:2376')  {
-       sh 'cp docker/docker-compose.yml ./docker-compose.yml'
-       sh 'mvn --version'}
+       stage('Deploy to QA') {
+           steps {
+               docker.withRegistry('http://10.1.2.27:2376')  {
+               sh 'cp docker/docker-compose.yml ./docker-compose.yml'
+               sh 'mvn --version'}
     } 
   }
 }
