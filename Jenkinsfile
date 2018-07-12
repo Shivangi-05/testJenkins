@@ -8,12 +8,10 @@ pipeline {
             }
         }
         
-            try {
+       try {
        docker.withRegistry('http://10.1.2.27:2376')  {
        sh 'cp docker/docker-compose.yml ./docker-compose.yml'
-       sh 'mvn --version'
-        }
-      }
+       sh 'mvn --version'}
     } finally {
       sh 'rm ./docker-compose.qa.yml'
     }
