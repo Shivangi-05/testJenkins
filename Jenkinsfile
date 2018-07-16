@@ -9,8 +9,8 @@ pipeline {
                     sh """docker \\
                             | -H 10.1.2.27:2376 \\
                             | login \\
-                            | -u ${USERNAME} \\
-                            | -p ${PASSWORD} \\
+                            | -u shivangi \\
+                            | -p shivangi \\
                             | 192.168.5.157:5000""".stripMargin()
                 }
             }
