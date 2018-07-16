@@ -12,8 +12,8 @@ pipeline {
                             | -u ${USERNAME} \\
                             | -p ${PASSWORD} \\
                             | 192.168.5.157:5000""".stripMargin()
-
                 }
             }
         }
+    }
 }
