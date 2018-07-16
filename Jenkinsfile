@@ -1,10 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent any
-
     stages {
-
         stage('Deploy to QA') {
             steps {
 
