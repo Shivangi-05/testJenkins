@@ -3,11 +3,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven   'maven-3.5.2'
-        jdk     'jdk1.8.0_152'
-    }
-
     stages {
 
         stage('Deploy to QA') {
