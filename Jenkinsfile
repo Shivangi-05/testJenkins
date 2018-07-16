@@ -2,6 +2,6 @@ node {
     checkout scm
 
     docker.withServer('tcp://10.1.2.27:2376') {
-        sh 'docker run test-image'
+        sh 'docker images'
     }
 }
